@@ -2,7 +2,7 @@
 title: "README"
 author: "Leo-Yu-8859"
 date: "2021/11/7"
-output: html_document
+output: md_document
 ---
 # Simulation for missing dataset
 
