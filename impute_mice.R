@@ -24,6 +24,7 @@ impute_mice <- function(n_count, n_x, ampdf, predictor_matrix, m=5,
   # expression
   expr <- paste0("lm(Y~",lm_expr, ")")
   
+  start <- Sys.time()
   for(i in 1:n_count){
     imp <- mice(ampdf[[i]], print=FALSE,
                 predictorMatrix=predictor_matrix, m=m,
@@ -46,6 +47,9 @@ impute_mice <- function(n_count, n_x, ampdf, predictor_matrix, m=5,
     
     p.valuedf <- rbind(p.valuedf, summary(pool_list[[i]])$p.value)
   }
+  end <- Sys.time()
+  runtime <- end - start
+  
   # add name 
   var_name <- c("intercept", paste0("X", 1:n_x))
   colnames(estimatedf) <- var_name
@@ -82,6 +86,7 @@ impute_mice <- function(n_count, n_x, ampdf, predictor_matrix, m=5,
   df_list <- list("estimatedf" = estimatedf, "lambdadf" = lambdadf, 
                   "ubardf" = ubardf, "bdf" = bdf, "tdf" = tdf)
   result <- list("imp_output"=impute_list, "mean_output"=mean_list,
-                 "df_output"=df_list, "p.value_freq"=p.value)
+                 "df_output"=df_list, "p.value_freq"=p.value, 
+                 "runtime"=runtime)
   return(result)
 }

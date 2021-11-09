@@ -160,6 +160,10 @@ all_normal_mice$mean_output
 # for each variable, output the frequency of the p-value larger than alpha.
 all_normal_mice$p.value_freq
 ```
+```{r}
+# runtime
+all_normal_mice$runtime
+```
 
 2. Impute my_var using impute_mice()
 ```{r}
@@ -172,6 +176,10 @@ my_var_mice$mean_output
 ```{r}
 # for each variable, output the frequency of which the p-value is larger than alpha.
 my_var_mice$p.value_freq
+```
+```{r}
+# runtime
+my_var_mice$runtime
 ```
 
 ## Impute with kNN
@@ -218,6 +226,10 @@ all_normal_kNN$mean_output
 # for each variable, output the frequency of the p-value larger than alpha.
 all_normal_kNN$p.value_freq
 ```
+```{r}
+# runtime
+all_normal_kNN$runtime
+```
 
 2. Impute my_var using impute_kNN()
 ```{r}
@@ -230,6 +242,10 @@ my_var_kNN$mean_output
 ```{r}
 # for each variable, output the frequency of which the p-value is larger than alpha.
 my_var_kNN$p.value_freq
+```
+```{r}
+# runtime
+my_var_kNN$runtime
 ```
 
 ## Impute with hot.deck()
@@ -270,6 +286,10 @@ all_normal_hd$mean_output
 # for each variable, output the frequency of the p-value larger than alpha.
 all_normal_hd$p.value_freq
 ```
+```{r}
+# runtime
+all_normal_hd$runtime
+```
 
 2. Impute my_var using impute_hd()
 ```{r}
@@ -282,6 +302,10 @@ my_var_hd$mean_output
 ```{r}
 # for each variable, output the frequency of which the p-value is larger than alpha.
 my_var_hd$p.value_freq
+```
+```{r}
+#runtime
+my_var_hd$runtime
 ```
 
 

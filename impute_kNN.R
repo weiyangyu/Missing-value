@@ -29,6 +29,7 @@ impute_kNN <- function(n_count, n_x, ampdf, k,
   
   expr <- paste0("lm(Y~",lm_expr, ")")
   
+  start <- Sys.time()
   for(i in 1:n_count){
     for(j in 1:length(k)){
       imp <- kNN(data=ampdf[[i]], k=k[j], dist_var=dist_var,
@@ -57,6 +58,8 @@ impute_kNN <- function(n_count, n_x, ampdf, k,
     
     p.valuedf <- rbind(p.valuedf, summary(pool_list[[i]])$p.value)
   }
+  end <- Sys.time()
+  runtime <- end - start
   
   # add name 
   var_name <- c("intercept", paste0("X", 1:n_x))
@@ -96,7 +99,8 @@ impute_kNN <- function(n_count, n_x, ampdf, k,
                   "lambdadf" = lambdadf, 
                   "ubardf" = ubardf, "bdf" = bdf, "tdf" = tdf)
   result <- list("imp_output"=imp_list, "mean_output"=mean_list,
-                 "df_output"=df_list,"p.value_freq"=p.value)
+                 "df_output"=df_list,"p.value_freq"=p.value,
+                 "runtime" = runtime)
   return(result)
 }
 
