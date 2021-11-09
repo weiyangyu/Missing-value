@@ -38,14 +38,17 @@ Arguments:
 ```{r}
 all_normal_data <- create_df(n_count = 10, n_sample = 100, n_x = 5, X_dist = NA, important = c(1,2))
 ```
+
 ```{r}
 # the linear regression model of generating the dependent variable
 all_normal_data$model
 ```
+
 ```{r}
 # the independent variables' values of 3 cases in 10th dataset
 head(all_normal_data$Xs[[10]],3)
 ```
+
 ```{r}
 # the values of 3 cases in 10th dataset
 head(all_normal_data$dfs[[10]],3)
@@ -59,14 +62,17 @@ my_var <- c("rnorm(n=n_sample, 10,10)", "rnorm(n=n_sample, 0,100)",
           "rexp(n=n_sample, 1)")
 my_var_data <- create_df(n_count = 10, n_sample = 100, n_x = 5, X_dist = my_var, important = c(1,2))
 ```
+
 ```{r}
 # the linear regression model of generating the dependent variable
 my_var_data$model
 ```
+
 ```{r}
 # the independent variables' values of 3 cases in 10th dataset
 head(my_var_data$Xs[[10]],3)
 ```
+
 ```{r}
 # the values of 3 cases in 10th dataset
 head(my_var_data$dfs[[10]],3)
@@ -100,10 +106,12 @@ Arguments:
 ```{r}
 amp_all_normal <- ampute_df(n_count = 10, Xs = all_normal_data$Xs, dfs = all_normal_data$dfs, prop=0.5, patterns=NULL, freq=NULL, bycases=TRUE)
 ```
+
 ```{r}
 # the values of 3 cases in 10th amputed dataset
 head(amp_all_normal$ampdf[[10]], 3)
 ```
+
 ```{r}
 # the missing pattern of 10th amputed dataset
 amp_all_normal$missing_pattern[[10]]
@@ -113,10 +121,12 @@ amp_all_normal$missing_pattern[[10]]
 ```{r}
 amp_my_var <- ampute_df(n_count = 10, Xs = my_var_data$Xs, dfs = my_var_data$dfs, prop=0.5, patterns=NULL, freq=NULL, bycases=TRUE)
 ```
+
 ```{r}
 # the values of 3 cases in 10th amputed dataset
 head(amp_my_var$ampdf[[10]], 3)
 ```
+
 ```{r}
 # the missing pattern of 10th amputed dataset
 amp_my_var$missing_pattern[[10]]
@@ -152,14 +162,17 @@ Arguments:
 ```{r}
 all_normal_mice <- impute_mice(n_count = 10, n_x = 5, ampdf = amp_all_normal$ampdf, lm_expr = all_normal_data$lm)
 ```
+
 ```{r}
 # output the mean of the pooled estimate, lambda, within-variance, between-variance and the total variance of the pooled estimate. 
 all_normal_mice$mean_output
 ```
+
 ```{r}
 # for each variable, output the frequency of the p-value larger than alpha.
 all_normal_mice$p.value_freq
 ```
+
 ```{r}
 # runtime
 all_normal_mice$runtime
@@ -169,14 +182,17 @@ all_normal_mice$runtime
 ```{r}
 my_var_mice <- impute_mice(n_count = 10, n_x = 5, ampdf = amp_my_var$ampdf, lm_expr = my_var_data$lm)
 ```
+
 ```{r}
 # output the mean of the pooled estimate, lambda, within-variance, between-variance and the total variance of the pooled estimate. 
 my_var_mice$mean_output
 ```
+
 ```{r}
 # for each variable, output the frequency of which the p-value is larger than alpha.
 my_var_mice$p.value_freq
 ```
+
 ```{r}
 # runtime
 my_var_mice$runtime
@@ -218,14 +234,17 @@ Arguments:
 ```{r}
 all_normal_kNN <- impute_kNN(n_count = 10, n_x = 5, ampdf = amp_all_normal$ampdf, k = c(1,3,5,7,9), lm_expr = all_normal_data$lm)
 ```
+
 ```{r}
 # output the mean of the pooled estimate, lambda, within-variance, between-variance and the total variance of the pooled estimate. 
 all_normal_kNN$mean_output
 ```
+
 ```{r}
 # for each variable, output the frequency of the p-value larger than alpha.
 all_normal_kNN$p.value_freq
 ```
+
 ```{r}
 # runtime
 all_normal_kNN$runtime
@@ -235,14 +254,17 @@ all_normal_kNN$runtime
 ```{r}
 my_var_kNN <- impute_kNN(n_count = 10, n_x = 5, ampdf = amp_my_var$ampdf, k = c(1,3,5,7,9), lm_expr = my_var_data$lm)
 ```
+
 ```{r}
 # output the mean of the pooled estimate, lambda, within-variance, between-variance and the total variance of the pooled estimate. 
 my_var_kNN$mean_output
 ```
+
 ```{r}
 # for each variable, output the frequency of which the p-value is larger than alpha.
 my_var_kNN$p.value_freq
 ```
+
 ```{r}
 # runtime
 my_var_kNN$runtime
@@ -278,14 +300,17 @@ Arguments:
 ```{r}
 all_normal_hd <- impute_hd(n_count = 10, n_x = 5, ampdf = amp_all_normal$ampdf, sdCutoff = 5, lm_expr = all_normal_data$lm)
 ```
+
 ```{r}
 # output the mean of the pooled estimate, lambda, within-variance, between-variance and the total variance of the pooled estimate. 
 all_normal_hd$mean_output
 ```
+
 ```{r}
 # for each variable, output the frequency of the p-value larger than alpha.
 all_normal_hd$p.value_freq
 ```
+
 ```{r}
 # runtime
 all_normal_hd$runtime
@@ -295,14 +320,17 @@ all_normal_hd$runtime
 ```{r}
 my_var_hd <- impute_hd(n_count = 10, n_x = 5, ampdf = amp_my_var$ampdf, method = "p.draw", lm_expr = my_var_data$lm)
 ```
+
 ```{r}
 # output the mean of the pooled estimate, lambda, within-variance, between-variance and the total variance of the pooled estimate. 
 my_var_hd$mean_output
 ```
+
 ```{r}
 # for each variable, output the frequency of which the p-value is larger than alpha.
 my_var_hd$p.value_freq
 ```
+
 ```{r}
 #runtime
 my_var_hd$runtime
